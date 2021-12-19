@@ -29,4 +29,6 @@ public class POI implements Serializable {
     private Category category;
 
 
+
+
 }

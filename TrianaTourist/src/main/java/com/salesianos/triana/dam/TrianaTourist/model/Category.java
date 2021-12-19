@@ -1,5 +1,6 @@
 package com.salesianos.triana.dam.TrianaTourist.model;
 
+import com.salesianos.triana.dam.TrianaTourist.dtos.POI.CreatePoiDto;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -18,4 +19,6 @@ public class Category implements Serializable {
     private Long id;
 
     private String name;
+
+
 }
