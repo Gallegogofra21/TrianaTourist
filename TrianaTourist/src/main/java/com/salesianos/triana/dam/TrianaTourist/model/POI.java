@@ -13,7 +13,7 @@ import java.util.Date;
 @Builder
 public class POI implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;

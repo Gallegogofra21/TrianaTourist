@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CategoryService {
 
-    private CategoryRepository repository;
-    private ConverterCategoryDto converter;
+    private final CategoryRepository repository;
+    private final ConverterCategoryDto converter;
 
     public List<GetCategoryDto> findAll() {
         List<Category> data = repository.findAll();
@@ -55,5 +55,10 @@ public class CategoryService {
 
     public void delete (@PathVariable Long id){
         Category category = repository.findById(id).orElseThrow(() -> new SingleEntityNotFoundException(id.toString(), Category.class));
+        repository.delete(category);
+    }
+
+    public boolean comprobarName(String name) {
+        return repository.existsByName(name);
     }
 }

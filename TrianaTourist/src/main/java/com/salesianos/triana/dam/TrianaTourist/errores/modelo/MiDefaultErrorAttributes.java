@@ -12,6 +12,7 @@ import java.util.Map;
 
 @Component
 public class MiDefaultErrorAttributes extends DefaultErrorAttributes {
+
     @Override
     public Map<String, Object> getErrorAttributes(WebRequest webRequest, ErrorAttributeOptions options) {
         Map<String, Object> errorAttributes = super.getErrorAttributes(webRequest, options);

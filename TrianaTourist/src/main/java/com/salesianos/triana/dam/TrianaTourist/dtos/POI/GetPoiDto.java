@@ -13,6 +13,6 @@ public class GetPoiDto {
     private Long id;
     private String name;
     private String coverPhoto;
-    private Long categoryId;
+    private String category;
 
 }

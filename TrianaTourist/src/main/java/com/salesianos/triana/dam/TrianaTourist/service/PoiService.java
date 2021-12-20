@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,6 +21,7 @@ public class PoiService {
 
     private final PoiRepository repository;
     private final ConverterPoiDto converter;
+    private final CategoryService categoryService;
 
     public List<GetPoiDto> findAll() {
         List<POI> data = repository.findAll();
@@ -39,8 +41,18 @@ public class PoiService {
                 .orElseThrow(() -> new SingleEntityNotFoundException(id.toString(), POI.class));
     }
 
-    public POI save (CreatePoiDto dto){
-        return repository.save(converter.createdPoiToDto(dto));
+    public POI save (CreatePoiDto c){
+        POI poi = POI.builder()
+                .name(c.getName())
+                .location(c.getLocation())
+                .description(c.getDescription())
+                .date(c.getDate())
+                .coverPhoto(c.getCoverPhoto())
+                .category(categoryService.findById(c.getCategoryId()))
+                .build();
+
+        return repository.save(poi);
+
     }
 
     public POI editar (CreatePoiDto dto, @PathVariable Long id){
@@ -50,6 +62,7 @@ public class PoiService {
             p.setDescription(dto.getDescription());
             p.setDate(dto.getDate());
             p.setCoverPhoto(dto.getCoverPhoto());
+            p.setCategory(categoryService.findById(dto.getCategoryId()));
             return repository.save(p);
         }).orElseThrow(() -> new SingleEntityNotFoundException(id.toString(), POI.class));
     }
@@ -58,5 +71,9 @@ public class PoiService {
         POI poi = repository.findById(id).orElseThrow(() -> new SingleEntityNotFoundException(id.toString(), POI.class));
         repository.delete(poi);
     }
+
+    /*public POI findPOIByName(String nombre){
+       return repository.findPOIByName(nombre);
+    }*/
 
 }

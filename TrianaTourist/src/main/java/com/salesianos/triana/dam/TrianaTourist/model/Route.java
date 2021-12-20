@@ -12,14 +12,16 @@ import java.util.List;
 @Builder
 public class Route {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
     @ManyToMany
-    @JoinTable(joinColumns = @JoinColumn(name = "route_id",
+    /*@JoinTable(joinColumns = @JoinColumn(name = "route_id",
                                 foreignKey = @ForeignKey(name = "FK_RUTA_POI")),
             inverseJoinColumns = @JoinColumn(name = "poi_id",
                     foreignKey = @ForeignKey(name = "FK_POI_RUTA")),
-            name = "puntos de ruta")
+            name = "POI")*/
     private List<POI> steps = new ArrayList<>();
 }

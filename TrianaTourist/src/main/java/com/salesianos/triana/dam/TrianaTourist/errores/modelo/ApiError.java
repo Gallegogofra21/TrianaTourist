@@ -23,7 +23,7 @@ public class ApiError {
     private String ruta;
 
     @Builder.Default
-    @JsonFormat(shape = JsonFormat.Shape.STRING.STRING, pattern = "dd/mm/yyyy hh:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy hh:mm:ss")
     private LocalDateTime fecha = LocalDateTime.now();
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
