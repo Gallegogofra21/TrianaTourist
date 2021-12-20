@@ -61,4 +61,8 @@ public class CategoryService {
     public boolean comprobarName(String name) {
         return repository.existsByName(name);
     }
+
+    public boolean comprobarId(Long id){
+        return repository.existsById(id);
+    }
 }
