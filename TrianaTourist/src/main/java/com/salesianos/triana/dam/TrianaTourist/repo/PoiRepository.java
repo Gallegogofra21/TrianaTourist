@@ -9,10 +9,5 @@ import java.util.Optional;
 
 public interface PoiRepository extends JpaRepository<POI, Long> {
 
-    /*@Query(value = """
-            SELECT *
-            FROM POI
-            WHERE name = :nombre
-            """,nativeQuery = true)
-    POI findPOIByName(@Param("nombre")String nombre);*/
+
 }

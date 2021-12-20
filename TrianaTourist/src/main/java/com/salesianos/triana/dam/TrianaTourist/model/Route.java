@@ -18,10 +18,11 @@ public class Route {
     private String name;
 
     @ManyToMany
-    /*@JoinTable(joinColumns = @JoinColumn(name = "route_id",
+    @Builder.Default
+    @JoinTable(joinColumns = @JoinColumn(name = "poi_id",
                                 foreignKey = @ForeignKey(name = "FK_RUTA_POI")),
-            inverseJoinColumns = @JoinColumn(name = "poi_id",
+            inverseJoinColumns = @JoinColumn(name = "route_id",
                     foreignKey = @ForeignKey(name = "FK_POI_RUTA")),
-            name = "POI")*/
+            name = "POIRUTAS")
     private List<POI> steps = new ArrayList<>();
 }

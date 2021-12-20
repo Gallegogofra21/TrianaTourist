@@ -47,7 +47,7 @@ public class RouteController {
     }
 
     @PostMapping("/{id}/poi")
-    public GetRouteDto addPoi (@RequestBody CreatedRouteWithPoi dto, @PathVariable Long id){
+    public GetRouteDto addPoi (@Valid @RequestBody CreatedRouteWithPoi dto, @PathVariable Long id){
         return service.addPoiToRoute(dto, id);
     }
 
